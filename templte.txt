@@ -10,27 +10,7 @@
 
 
 
-    PublicSubnet: 
-        Type: AWS::EC2::Subnet
-        Properties:
-            VpcId: !Ref VPC
-            AvailabilityZone: !Select [ 1, !GetAZs '' ]
-            CidrBlock: !Ref PublicSubnetCIDR
-            MapPublicIpOnLaunch: true
-            Tags: 
-                - Key: Name 
-                  Value: !Sub ${EnvironmentName} Public Subnet (AZ2)
-
-    PrivateSubnet: 
-        Type: AWS::EC2::Subnet
-        Properties:
-            VpcId: !Ref VPC
-            AvailabilityZone: !Select [ 0, !GetAZs '' ]
-            CidrBlock: !Ref PrivateSubnetCIDR
-            MapPublicIpOnLaunch: false
-            Tags: 
-                - Key: Name 
-                  Value: !Sub ${EnvironmentName} Private Subnet (AZ1)
+    
 
     NatGateway1EIP:
         Type: AWS::EC2::EIP
